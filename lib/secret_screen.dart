@@ -27,13 +27,13 @@ class _SecretScreenState extends State<SecretScreen> {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: const [
-                  Text("Copiar link para inscrever-se"),
+                  Text("Copiar link do canal"),
                   SizedBox(width: 7.5),
                   Icon(Icons.copy),
                 ],
               ),
               onPressed: () async {
-                await Clipboard.setData(const ClipboardData(text: 'https://www.youtube.com/channel/UCQj0fBYyUljEkP_bUpnqKLw'));
+                await Clipboard.setData(const ClipboardData(text: 'https://www.youtube.com/channel/UCQj0fBYyUljEkP_bUpnqKLw?sub_confirmation=1'));
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text("Link copiado com sucesso!"),
                   backgroundColor: Colors.green,
