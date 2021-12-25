@@ -14,12 +14,11 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final LocalAuthentication _localAuth = LocalAuthentication();
-  late bool deviceSupported;
+  bool deviceSupported = false;
 
   @override
   void initState() {
     super.initState();
-    _localAuth.isDeviceSupported().then((value) => deviceSupported = value);
   }
 
   AndroidAuthMessages _androidAuthMessages (){
@@ -31,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<List<BiometricType>> _initBiometrics() async {
+    deviceSupported = await _localAuth.isDeviceSupported();
     List<BiometricType> _availableBiometrics = <BiometricType>[];
     if (deviceSupported) {
       try {
